@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mod/ecoliplugin/db/install.xml -->
+<XMLDB PATH="mod/ecoliplugin/db" VERSION="2025020701" COMMENT="Installation file for the E. coli Inkubatorius plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+  <TABLES>
+    <!-- Table for plugin instances -->
+    <TABLE NAME="ecoliplugin" COMMENT="Stores instance data for the E. coli Inkubatorius activity">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key" />
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Course id" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Name of the activity" />
+        <FIELD NAME="intro" TYPE="text" NOTNULL="false" COMMENT="Introduction text" />
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" COMMENT="Format of the introduction" />
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Creation timestamp" />
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Modification timestamp" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course_idx" UNIQUE="false" FIELDS="course" />
+      </INDEXES>
+    </TABLE>
+    <!-- Table for storing game results -->
+    <TABLE NAME="ecoliplugin_results" COMMENT="Stores game results for each attempt">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key" />
+        <FIELD NAME="instanceid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the plugin instance" />
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User ID" />
+        <!-- Change TYPE to float and remove LENGTH -->
+        <FIELD NAME="score" TYPE="float" NOTNULL="true" DEFAULT="0" COMMENT="Final game score" />
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Timestamp" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="userid_index" UNIQUE="false" FIELDS="userid" />
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

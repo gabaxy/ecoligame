@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E. coli inkubatorius</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+<!-- Keep the game inside Moodle's activity container -->
+<div class="ecoliplugin-container">
+  <div id="game-interface">
+    <!-- Start screen: only visible until a valid temperature is entered -->
+    <div id="start-screen" class="start-screen">
+      <h1>Pradėkite auginti E. coli koloniją</h1>
+      <label for="initial-temperature">Pasirinkite pradinę temperatūrą:</label>
+      <input type="number" id="initial-temperature" min="-10" max="50" required>
+      <button id="start-game">Pradėti žaidimą</button>
+    </div>
+
+    <!-- Game container: initially hidden -->
+    <div id="game-container">
+      <div id="background-wrapper"></div> <!-- Šitas užtikrins foną -->
+      <div id="threejs-container"></div>
+      <div id="thermometer-container"></div>
+      <div class="info-panel">
+      Minučių skaičius: <span id="day-counter"></span><br>
+      Augimo faktorius: <span id="growth-factor"></span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
