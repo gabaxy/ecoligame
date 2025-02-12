@@ -68,7 +68,7 @@ function startGame() {
 
 function updateStep() {
   stepsPassed++;
-  document.getElementById("day-counter").textContent = stepsPassed*20;
+  document.getElementById("day-counter").textContent = stepsPassed;
   document.getElementById("growth-factor").textContent = window.growthMultiplier.toFixed(2);
 
   if (stepsPassed <= 8) {

@@ -51,9 +51,6 @@ if ($launch) {
             Minučių skaičius: <span id="day-counter"></span><br>
             Augimo faktorius: <span id="growth-factor"></span>
           </div>
-          <div class="score-panel">
-            Taškai: <span id="score-display"></span>
-          </div>
         </div>
       </div>
     </div>
